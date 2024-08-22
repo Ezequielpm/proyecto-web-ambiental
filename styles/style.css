@@ -1,3 +1,34 @@
 :root {
   --color-primario: green;
 }
+
+.container-nav {
+  display: flex;
+  height: 20vh;
+  /* background-color: aqua; */
+}
+
+.logo-y-titulo {
+  width: 40%;
+  background-color: blueviolet;
+}
+.navs {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  text-transform: uppercase;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: bold;
+}
+
+.boton-navs {
+  padding: 5%;
+  width: 7%;
+  height: 5%;
+}
+
+.boton-navs:hover {
+  background-color: yellow;
+  /* cursor: alias; */
+}
