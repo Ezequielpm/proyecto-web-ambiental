@@ -1,34 +1,125 @@
-:root {
-  --color-primario: green;
+body {
+  font-family:Arial, Helvetica, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.container-nav {
+.navbar {
+  width: 100%;
   display: flex;
-  height: 20vh;
-  /* background-color: aqua; */
+  justify-content: space-between;
+  align-items: center;
+  /* background-color:rgba(0, 0, 0, 0.5); */
+  padding: 1.5rem 1.5rem;
+  position: absolute; /* Para que se superponga en la imagen de fondo */
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
 }
 
-.logo-y-titulo {
-  width: 40%;
-  background-color: blueviolet;
-}
-.navs {
+.navbar ul {
+  list-style: none;
   display: flex;
-  flex-direction: row;
-  width: 60%;
-  text-transform: uppercase;
-  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0.25rem 0.3125rem; /* 5px */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
   text-align: center;
-  font-weight: bold;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  border: 0.125rem solid white; /* 2px */
+  border-radius: 1.875rem; /* 30px */
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.boton-navs {
-  padding: 5%;
-  width: 7%;
-  height: 5%;
+.nav-item {
+  font-size: 1.125rem;
 }
 
-.boton-navs:hover {
-  background-color: yellow;
-  /* cursor: alias; */
+.navbar a:hover {
+  background-color: white;
+  color: black;
+}
+
+.navbar .logo {
+  padding-right: 1.875rem; /* 30px */
+}
+
+
+.hero-section {
+  height: 100vh;
+  background: url("../assets/Botanical.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 2.25rem;
+}
+
+.hero-content h2 {
+  font-size: 10rem;
+  margin: 0;
+  font-weight:800;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  max-width: 50rem;
+}
+
+.subtext-shadow {
+  text-align: left;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.title-shadow {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-button {
+  position: absolute;
+  bottom: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-button img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.content-section {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.content-section p {
+  font-size: 1.2rem;
+  color: #333;
 }
