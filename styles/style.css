@@ -9,6 +9,11 @@ body {
   padding: 0;
 }
 
+header {
+  position: relative;
+  z-index: 10; /* superponer el header por encima del hero */
+}
+
 .navbar {
   width: 100%;
   display: flex;
@@ -16,7 +21,7 @@ body {
   align-items: center;
   /* background-color:rgba(0, 0, 0, 0.5); */
   padding: 1.5rem 1.5rem;
-  position: absolute; /* Para que se superponga en la imagen de fondo */
+  position: absolute; 
   top: 0;
   left: 0;
   box-sizing: border-box;
@@ -71,7 +76,7 @@ body {
 
 .hero-content h1 {
   font-size: 2rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.125rem;
   padding-left: 1rem;
 }
 
