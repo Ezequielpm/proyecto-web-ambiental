@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+}
+body{
+    background-color: greenyellow;
+}
+
+.lista-articulos{
+    /* height: 100rem; */
+    /* width: 100%; */
+    background-color: antiquewhite;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lista-articulos .articulo{
+    border-style: solid;
+    border-color: black;
+    /* width: calc(20%); */
+    /* height: calc(30%); */
+    width: 20%;
+    height: 30rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+.lista-articulos .articulo .articulo-nombre{
+    /* width: auto;
+    height: auto; */
+    font-size: 3rem;
+    text-align: center;
+}
+
+.lista-articulos .articulo .articulo-imagen{
+    width: 50%;
+}
+
+.lista-articulos .articulo .articulo-descripcion,.articulo-ubicacion,.articulo-fecha-subida,.articulo-fecha-actualizacion{
+    /* width: auto;
+    height: auto; */
+    font-size: 2rem;
+    text-align: center;
+}
+
+.pagination{
+    height: 4rem;
+    text-align: center;
+    background-color: white;
+}
+
+.pagination .step-links{
+    font-size: 3.5rem;
+}
+
+.pagination .step-links .boton-pagina-siguiente,.boton-pagina-anterior,.boton-pagina-ultima,.boton-pagina-primera{
+    color: chocolate;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.pagination .step-links .boton-pagina-siguiente:hover,.boton-pagina-anterior:hover,.boton-pagina-ultima:hover,.boton-pagina-primera:hover{
+    color: blueviolet;
+}
+/* 
+@media (max-width: 599px) {
+    .lista-articulos{
+        height: 170rem;
+    }
+
+    .lista-articulos .articulo{
+        height: 20%;
+        background-color: aqua;
+    }
+} */

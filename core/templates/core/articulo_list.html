@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Artículos</title>
+    <link rel="stylesheet" href="{% static 'core/style_articulos.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center; font-size: 4rem;">Artículos en Intercambio</h1>
+    <ul class="lista-articulos">
+        {% for articulo in articulos %}
+            <li class="articulo">
+                <a href="{% url 'articulo-detail' articulo.pk %}" class="articulo-nombre">{{ articulo.nombre }}</a>
+                {% comment %} <h2 class="articulo-nombre">{{ articulo.nombre }}</h2> {% endcomment %}
+                
+                {% if articulo.imagen %}
+                <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" style="max-width: 200px; max-height: 200px;" class="articulo-imagen">
+                {% endif %}
+                    
+                {% comment %} <p class="articulo-descripcion">{{ articulo.descripcion }}</p> {% endcomment %}
+                <p class="articulo-ubicacion">Ubicación: {{ articulo.ubicacion }}</p>
+                <p class="articulo-fecha-subida">Fecha de subida: {{ articulo.fecha_subida }}</p>
+                <p class="articulo-fecha-actualizacion">Última actualización: {{ articulo.fecha_actualizacion }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="boton-pagina-primera">&laquo; primera</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="boton-pagina-anterior">anterior</a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="boton-pagina-siguiente">siguiente</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="boton-pagina-ultima">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
