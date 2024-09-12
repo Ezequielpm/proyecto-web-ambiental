@@ -1,11 +1,72 @@
-<h1>{{ articulo.nombre }}</h1>
-<p>{{ articulo.descripcion }}</p>
-<p>Ubicación: {{ articulo.ubicacion }}</p>
-<p>Fecha de subida: {{ articulo.fecha_subida }}</p>
-<p>Fecha de actualización: {{ articulo.fecha_actualizacion }}</p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalles del Artículo</title>
+    <link rel="stylesheet" href="{% static 'core/styles/product-details.css' %}" />
+  </head>
+  <body>
+    <div class="product-container">
+      <div class="breadcrumb">
+        <a href="{% url 'articulo-list' %}">Home</a> / <a href="#">Intercambio</a> / {{articulo.nombre}}
+      </div>
 
-{% if articulo.imagen %}
-    <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" style="max-width: 400px;">
-{% endif %}
+      <div class="product-grid">
+        <div class="product-images">
+          <div class="main-image">
+            
+            {% if articulo.imagen %}
+            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
+            {% endif %}
+              
+          </div>
+          <div class="image-thumbnails">
+            
+            {% if articulo.imagen %}
+            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
+            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
+            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
+            {% else %}
+            <h2 style="text-align: center; color: red;">No hay imagenes disponibles</h2>
+            {% endif %}
+            
+              
+            
+          </div>
+        </div>
 
-<a href="{% url 'articulo-list' %}">Volver a la lista de artículos</a>
+        <div class="product-info">
+          <h1 class="product-title">{{articulo.nombre}}</h1>
+          <p class="product-user">Subido por: Juan Pérez</p>
+          <p class="product-date">Publicado el: {{articulo.fecha_subida}}</p>
+          <p class="product-description">
+            {{ articulo.descripcion }}
+          </p>
+
+          <div class="contact-info">
+            <h3>Contacto del dueño:</h3>
+            <p>
+              Correo electrónico:
+              <a href="#">juan.perez@example.com</a>
+            </p>
+          </div>
+
+          <div class="product-actions">
+            <button class="like-button">Me gusta</button>
+            <button class="contact-button">Hablar con el dueño</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-details">
+        <h2>Detalles adicionales:</h2>
+        <p>
+          Reciclada y disponible para intercambiar en la región de México.
+          Perfecta para el uso diario.
+        </p>
+      </div> 
+    </div>
+  </body>
+</html>

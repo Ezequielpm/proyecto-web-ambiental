@@ -1,0 +1,11 @@
+<h1>{{ articulo.nombre }}</h1>
+<h1>{{ articulo.descripcion }}</h1>
+<h1>Ubicación: {{ articulo.ubicacion }}</h1>
+<p>Fecha de subida: {{ articulo.fecha_subida }}</p>
+<p>Fecha de actualización: {{ articulo.fecha_actualizacion }}</p>
+
+{% if articulo.imagen %}
+    <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" style="max-width: 400px;">
+{% endif %}
+
+<a href="{% url 'articulo-list' %}">Volver a la lista de artículos</a>

@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    /* background-color: #cb0000; */
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .product-container {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 4rem;
+  }
+  
+  .breadcrumb {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb a {
+    text-decoration: none;
+    color: #555;
+  }
+  
+  .product-grid {
+    display: grid; /*aplicando grid*/
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+  }
+  
+  .product-images {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-image img {
+    width: 368px;
+    /* width: 100%; */
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .image-thumbnails {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .image-thumbnails img {
+    width: 110px;
+    /* width: 30%; */
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .product-user,
+  .product-date {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .contact-info a {
+    color: #008cba;
+    text-decoration: none;
+  }
+  
+  .product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .like-button,
+  .contact-button {
+    background-color: #0da9dd;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .like-button {
+    background-color: #fd4343;
+  }
+  
+  .like-button:hover,
+  .contact-button:hover {
+    opacity: 0.8;
+  }
+  
+  .product-details {
+    margin-top: 40px;
+  }
+  
+  .product-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .product-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .like-button,
+    .contact-button {
+      width: 100%;
+    }
+  }
+  

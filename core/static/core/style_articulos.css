@@ -4,13 +4,13 @@
     font-size: 62.5%;
 }
 body{
-    background-color: greenyellow;
+    background-color: blueviolet;
 }
 
 .lista-articulos{
     /* height: 100rem; */
     /* width: 100%; */
-    background-color: antiquewhite;
+    background-color: rgb(45, 14, 249);
     display: flex;
     gap: 1rem;
     justify-content: space-evenly;
