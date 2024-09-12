@@ -9,9 +9,10 @@ def inicio(request):
 
 class ArticuloListView(ListView):
     model = Articulo
-    template_name = 'core/articulo_list.html'
+    # template_name = 'core/articulo_list.html'
+    template_name = 'core/index.html'
     context_object_name = 'articulos'
-    paginate_by = 12
+    paginate_by = 4
 
 from django.views.generic.detail import DetailView
 
