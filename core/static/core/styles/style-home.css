@@ -177,10 +177,8 @@ header {
 
 
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* display: flex;
-  justify-content: center; */
+  display: flex;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
 }
@@ -201,7 +199,7 @@ header {
 }
 
 .card-img img:first-child {
-  width: 100%;
+  width: auto;
   height: 200px;
   object-fit: cover;
 }

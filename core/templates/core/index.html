@@ -120,10 +120,9 @@
           <div class="card">
             
             {% if articulo.imagen %}
-            <img src="{{ articulo.imagen.url }}" alt="" />
-            {% endif %}
-              
             <div class="card-img">
+            <img src="{{ articulo.imagen.url }}" alt="" />
+
               {% comment %} <img src="{{ articulo.imagen.url }}" alt="" /> {% endcomment %}
               <button type="button" class="like-icon">
                 <svg
@@ -142,6 +141,9 @@
                 </svg>
               </button>
             </div>
+            {% endif %}
+              
+            
             <div class="card-content">
               <h2 class="item-name">{{articulo.nombre}}</h2>
               <p class="item-location">{{articulo.ubicacion}}</p>
