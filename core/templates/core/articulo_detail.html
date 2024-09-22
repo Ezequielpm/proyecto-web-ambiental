@@ -42,7 +42,7 @@
           <p class="product-user">Subido por: Juan Pérez</p>
           <p class="product-date">Publicado el: {{articulo.fecha_subida}}</p>
           <p class="product-description">
-            {{ articulo.descripcion }}
+            {% comment %} {{ articulo.descripcion }} {% endcomment %}
           </p>
 
           <div class="contact-info">
@@ -61,10 +61,9 @@
       </div>
 
       <div class="product-details">
-        <h2>Detalles adicionales:</h2>
+        <h2>Descripción:</h2>
         <p>
-          Reciclada y disponible para intercambiar en la región de México.
-          Perfecta para el uso diario.
+          {{articulo.descripcion}}
         </p>
       </div> 
     </div>

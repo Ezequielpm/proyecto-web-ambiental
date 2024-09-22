@@ -65,6 +65,8 @@
   .product-info {
     display: flex;
     flex-direction: column;
+    /* background-color: violet; */
+    border-radius: 25px;
   }
   
   .product-title {
@@ -72,6 +74,8 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    text-align: center;
+    margin-top: 30px;
   }
   
   .product-user,
@@ -79,18 +83,21 @@
     font-size: 14px;
     color: #777;
     margin-bottom: 10px;
+    margin-left: 20px;
   }
   
   .product-description {
     font-size: 16px;
     color: #555;
     margin-bottom: 20px;
+    margin-left: 20px;
   }
   
   .contact-info h3 {
     font-size: 18px;
     color: #333;
     margin-bottom: 5px;
+    margin-left: 20px;
   }
   
   .contact-info a {

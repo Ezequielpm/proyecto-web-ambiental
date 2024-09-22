@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Primer boceto</title>
-    <link rel="stylesheet" href="{% static 'core/styles/style-home.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/styles/style_listado_articulos.css' %}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
-    <header>
+    <!-- <header>
       <nav class="navbar">
         <div data-aos="fade-in" class="nav-left">
           <ul>
@@ -57,9 +57,9 @@
           </ul>
         </div>
       </nav>
-    </header>
+    </header> -->
     <main>
-      <section class="hero-section">
+      <!-- <section class="hero-section">
         <div class="hero-content">
           <h1
             class="subtext-shadow"
@@ -98,32 +98,39 @@
             </button>
           </div>
         </div>
-      </section>
-
+      </section> -->
+      <div class="container-bread">
+        <div class="breadcrumb">
+          <a href="{% url 'articulo-list' %}">Home</a>
+        </div>
+      </div>
       <!------------------Lista de artículos-------------------------->
       <section id="product-section">
 
         <div class="product-section-text-container">
           <div>
-            <h2 class="product-section__title">Nuevos artículos</h2>
+            <h2 class="product-section__title">Artículos disponibles</h2>
           </div>
           <div>
             <p class="product-section__text">Aquí encontrarás tus artículos favoritos para intercambiar por alguno que ya no necesites. Recuerda, ¿para qué tirar si puedes reciclar?</p>
           </div>
         </div>
         
-
+        
         <div class="card-container">
           <!--------Carousel--------->
           
           {% for articulo in articulos %}
+          
           <div class="card">
-            
-            {% if articulo.imagen %}
             <div class="card-img">
-            <img src="{{ articulo.imagen.url }}" alt="" />
-
-              {% comment %} <img src="{{ articulo.imagen.url }}" alt="" /> {% endcomment %}
+              
+              {% if articulo.imagen %}
+              <img src="{{articulo.imagen.url}}" alt="image1" class="zoom" data-articulo-id="{{articulo.pk}}"/>
+              {% else %}
+              <h2 class="no-images">No hay imagenes disponibles</h2>
+              {% endif %}
+                
               <button type="button" class="like-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -141,14 +148,10 @@
                 </svg>
               </button>
             </div>
-            {% endif %}
-              
-            
             <div class="card-content">
               <h2 class="item-name">{{articulo.nombre}}</h2>
               <p class="item-location">{{articulo.ubicacion}}</p>
               <p class="item-datetime">{{articulo.fecha_subida}}</p>
-              {% comment %} <a href="{% url 'articulo-detail' articulo.pk %}" type="button" class="arrow-icon"></a> {% endcomment %}
               <button type="button" class="arrow-icon" onclick="location.href='{% url 'articulo-detail' articulo.pk %}'">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -168,55 +171,33 @@
             </div>
           </div>
           {% endfor %}
+          <script>
+            document.addEventListener("DOMContentLoaded",function(){
+              let images = document.querySelectorAll(".zoom");
+              images.forEach(function(image){
+                let articuloId = image.getAttribute("data-articulo-id");
+                image.addEventListener("click",function(){
+                  window.location.href="{% url 'articulo-detail' 0 %}".replace("0",articuloId);
+                })
+              })
+            })
+          </script>
+          {% comment %} <script>
+            let images = document.querySelectorAll(".zoom"); // Selecciona todos los elementos con la clase 'zoom'
             
+            images.forEach(function(image) {
+              image.addEventListener("click", function() {
+                window.location.href = "{% url 'articulo-detail' articulo.pk %}";
+              });
+            });
+          </script> {% endcomment %}
           <!-- Container #1 -->
-          <!-- <div class="card">
-            <div class="card-img">
-              {% comment %} <img src="{{ articulo.imagen.url }}" alt="image1" /> {% endcomment %}
-              <button type="button" class="like-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-heart-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div class="card-content">
-              <h2 class="item-name">Artículo 1</h2>
-              <p class="item-location">Huixtla</p>
-              <p class="item-datetime">Hace 1 día</p>
-              <button type="button" class="arrow-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-arrow-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>--> 
+          
 
           <!-- Container #2 -->
-         <!-- <div class="card">
+          <!--<div class="card">
             <div class="card-img">
-              {% comment %} <img src="../assets/img2.jpg" alt="image2" /> {% endcomment %}
+              <img src="descarga (21).jpeg" alt="image2" />
               <button type="button" class="like-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -255,12 +236,12 @@
                 />
               </svg>
             </button>
-          </div>-->
+          </div>
 
-          <!-- Container #3 -->
-          <!--<div class="card">
+            Container #3 -->
+           <!--<div class="card">
             <div class="card-img">
-              {% comment %} <img src="../assets/img3.jpg" alt="image3" /> {% endcomment %}
+              <img src="descarga (22).jpeg" alt="image3" />
               <button type="button" class="like-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -299,12 +280,12 @@
                 </svg>
               </button>
             </div>
-          </div> -->
+          </div>
 
-          <!-- Container #1 -->
-         <!-- <div class="card">
+           Container #4 -->
+          <!--<div class="card">
             <div class="card-img">
-              {% comment %} <img src="../assets/img1.jpg" alt="image1" /> {% endcomment %}
+              <img src="images (15).jpeg" alt="image1" />
               <button type="button" class="like-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -343,13 +324,244 @@
                 </svg>
               </button>
             </div>
-          </div>-->
+          </div>
 
-        </div>
+
+          <div class="card">
+            <div class="card-img">
+              <img src="bicicleta.jpeg" alt="image1" />
+              <button type="button" class="like-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-heart-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <h2 class="item-name">Artículo 4</h2>
+              <p class="item-location">Huixtla</p>
+              <p class="item-datetime">Hace 5 días</p>
+              <button type="button" class="arrow-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-img">
+              <img src="descarga (21).jpeg" alt="image1" />
+              <button type="button" class="like-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-heart-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <h2 class="item-name">Artículo 4</h2>
+              <p class="item-location">Huixtla</p>
+              <p class="item-datetime">Hace 5 días</p>
+              <button type="button" class="arrow-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-img">
+              <img src="descarga (22).jpeg" alt="image1" />
+              <button type="button" class="like-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-heart-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <h2 class="item-name">Artículo 4</h2>
+              <p class="item-location">Huixtla</p>
+              <p class="item-datetime">Hace 5 días</p>
+              <button type="button" class="arrow-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-img">
+              <img src="images (15).jpeg" alt="image1" />
+              <button type="button" class="like-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-heart-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <h2 class="item-name">Artículo 4</h2>
+              <p class="item-location">Huixtla</p>
+              <p class="item-datetime">Hace 5 días</p>
+              <button type="button" class="arrow-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-img">
+              <img src="bicicleta.jpeg" alt="image1" />
+              <button type="button" class="like-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-heart-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <h2 class="item-name">Artículo 1</h2>
+              <p class="item-location">Huixtla</p>
+              <p class="item-datetime">Hace 1 día</p>
+              <button type="button" class="arrow-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="svg-arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>-->
       </section>
     </main>
-    <footer class="footer">
-      <button id="button-see-all" onclick="location.href='{% url 'articulos-view-all' %}'">Ver todos</button>
+    <footer class="pagination">
+    {% if page_obj.has_previous %}
+    <button onclick="location.href='?page={{page_obj.previous_page_number}}'"><</button>
+    {% else %}
+    <button disabled style="cursor: default;"><</button>
+    {% endif %}
+       Página {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+       {% if page_obj.has_next %}
+      <button onclick="location.href='?page={{page_obj.next_page_number}}'">></button>
+      {% else %}
+      <button disabled style="cursor: default;">></button>
+       {% endif %}
+        
     </footer>
     <!-----------Librerías y Scripts----------->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

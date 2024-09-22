@@ -13,6 +13,7 @@ class ArticuloListView(ListView):
     template_name = 'core/index.html'
     context_object_name = 'articulos'
     paginate_by = 4
+    ordering = ['-fecha_subida']
 
 from django.views.generic.detail import DetailView
 
@@ -20,4 +21,11 @@ class ArticuloDetailView(DetailView):
     model = Articulo
     template_name = 'core/articulo_detail.html'
     context_object_name = 'articulo'
+
+class ArticuloViewAll(ListView):
+    model = Articulo
+    template_name = 'core/articulos_listado.html'
+    context_object_name = 'articulos'
+    paginate_by = 4    
+    ordering = ['-fecha_subida']
 
