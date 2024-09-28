@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #Paths del auth
     path('accounts/',include('django.contrib.auth.urls')),
+    path('registration/', include('registration.urls')),  # Incluye las URLs de la app "registration"
 ]
 
 
