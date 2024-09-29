@@ -36,15 +36,26 @@
         </div>
         <div class="nav-right">
           <ul>
+            {% if not request.user.is_authenticated %}
             <li>
               <a
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
-                href="#"
+                href="{% url 'login' %}"
+                >Iniciar sesion</a
+              >
+            </li>
+            <li>
+              <a
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                class="nav-item"
+                href="{% url 'signup' %}"
                 >Registro</a
               >
             </li>
+            {% else %}
             <li>
               <a
                 data-aos="zoom-in"
@@ -54,6 +65,20 @@
                 >Perfil</a
               >
             </li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" data-aos="zoom-in" data-aos-duration="2000" class="nav-item" role="link">Salir</button>
+              </form>
+              {% comment %} <a
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                class="nav-item"
+                href="{% url 'logout' %}"
+                >Salir</a
+              > {% endcomment %}
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
