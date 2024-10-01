@@ -12,7 +12,7 @@
       <nav class="navbar">
         <div data-aos="fade-in" class="nav-left">
           <ul>
-            <li><img src="" alt="" class="logo" /></li>
+            <li><h2 class="logo">Trueque</h2></li>
             <li>
               <a
                 data-aos="zoom-in"
@@ -33,22 +33,17 @@
             </li>
           </ul>
         </div>
-        <div class="nav-right">
+        <div data-aos="fade-in" class="nav-right">
           <ul>
             <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="#"
-                >Registro</a
-              >
+              <button class="btnLogin-popup">Inicia sesión</button>
             </li>
             <li>
               <a
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
+                id="nav-perfil"
                 href="#"
                 >Perfil</a
               >
@@ -59,6 +54,92 @@
     </header>
     <main>
       <section class="hero-section">
+        <div class="wrapper">
+          <span class="icon-close"
+            ><ion-icon name="close-outline"></ion-icon
+          ></span>
+
+          <div class="form-box login">
+            <h2>Iniciar sesión</h2>
+            <form action="#">
+              <div class="input-box">
+                <span class="icon">
+                  <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" required />
+                <label>Correo</label>
+              </div>
+
+              <div class="input-box">
+                <span class="icon">
+                  <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" required />
+                <label>Contraseña</label>
+              </div>
+
+              <div class="remember-forgot">
+                <label><input type="checkbox" /> Recordarme</label>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+              </div>
+
+              <button type="submit" class="btn">Iniciar sesión</button>
+
+              <div class="login-register">
+                <p>
+                  ¿No tienes una cuenta?
+                  <a href="#" class="register-link">Regístrate</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- <div class="form-box register">
+          <h2>Regístrate</h2>
+          <form action="#">
+
+            <div class="input-box"></div>
+              <span class="icon">
+                <ion-icon name="person"></ion-icon>
+              </span>
+              <input type="text" required />
+              <label>Usuario</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon">
+                <ion-icon name="mail"></ion-icon>
+              </span>
+              <input type="email" required />
+              <label>Correo</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon">
+                <ion-icon name="lock-closed"></ion-icon>
+              </span>
+              <input type="password" required />
+              <label>Contraseña</label>
+            </div>
+
+            <div class="remember-forgot">
+              <label><input type="checkbox" /> Recordarme</label>
+              <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit" class="btn">Iniciar sesión</button>
+
+            <div class="login-register">
+              <p>
+                ¿No tienes una cuenta?
+                <a href="#" class="register-link">Regístrate</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div> -->
+
         <div class="hero-content">
           <h1
             class="subtext-shadow"
@@ -101,16 +182,18 @@
 
       <!------------------Lista de artículos-------------------------->
       <section id="product-section">
-
         <div class="product-section-text-container">
           <div>
             <h2 class="product-section__title">Nuevos artículos</h2>
           </div>
           <div>
-            <p class="product-section__text">Aquí encontrarás tus artículos favoritos para intercambiar por alguno que ya no necesites. Recuerda, ¿para qué tirar si puedes reciclar?</p>
+            <p class="product-section__text">
+              Aquí encontrarás tus artículos favoritos para intercambiar por
+              alguno que ya no necesites. Recuerda, ¿para qué tirar si puedes
+              reciclar?
+            </p>
           </div>
         </div>
-        
 
         <div class="card-container">
           <!--------Carousel--------->
@@ -290,12 +373,19 @@
               </button>
             </div>
           </div>
-
         </div>
       </section>
     </main>
     <!-----------Librerías y Scripts----------->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="../script.js"></script>
   </body>
 </html>
