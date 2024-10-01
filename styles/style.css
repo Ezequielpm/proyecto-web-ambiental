@@ -30,11 +30,11 @@ header {
   z-index: 99; /* superponer el header por encima del hero */
 }
 
-  .logo {
-    color: #fff;
-    font-weight: 800;
-  }
- .navbar {
+.logo {
+  color: #fff;
+  font-weight: 800;
+}
+.navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,7 +44,7 @@ header {
   
   box-sizing: border-box;
   */
-} 
+}
 
 .navbar ul {
   list-style: none;
@@ -63,10 +63,10 @@ header {
   font-weight: 500;
   margin-left: 20px; /* espacio entre los botones del nav*/
   text-align: center;
-  padding: 0.625rem 1.25rem; 
-  border: 0.125rem solid white; 
-  border-radius: 1.875rem; 
-  transition: .5s; 
+  padding: 0.625rem 1.25rem;
+  border: 0.125rem solid white;
+  border-radius: 1.875rem;
+  transition: 0.5s;
 }
 
 .navbar a:hover {
@@ -81,10 +81,10 @@ header {
   font-weight: 500;
   border: 0.125rem solid white;
   border-radius: 1.875rem;
-  transition: .5s;
+  transition: 0.5s;
   margin-bottom: 10px;
   width: 8rem;
-  height: 3.0rem;
+  height: 3rem;
   background: transparent;
   outline: none;
   cursor: pointer;
@@ -107,14 +107,14 @@ header {
   width: 28rem;
   height: 34rem;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, .5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 2rem;
   backdrop-filter: blur(20px);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -138,10 +138,9 @@ header {
   border-bottom-left-radius: 20px;
   cursor: pointer;
   z-index: 1;
-
 }
 
-.form-box h2{
+.form-box h2 {
   font-size: 2rem;
   color: white;
   text-align: center;
@@ -166,11 +165,11 @@ header {
   color: white;
   font-weight: 500;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
   top: -5px;
 }
 
@@ -195,12 +194,12 @@ header {
 }
 
 .remember-forgot {
- font-size: .9em;
- color: white;
- font-weight: 500;
- margin: -15px 0 15px;
- display: flex;
- justify-content: space-between;
+  font-size: 0.9em;
+  color: white;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .remember-forgot label input {
@@ -231,7 +230,7 @@ header {
 }
 
 .login-register {
-  font-size: .9em;
+  font-size: 0.9em;
   color: white;
   text-align: center;
   font-weight: 500;
