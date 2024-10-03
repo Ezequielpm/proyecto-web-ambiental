@@ -23,7 +23,7 @@
     <div class="container">
    <h2>Subir un nuevo artículo</h2>
 
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <!-- Campo para subir imagen -->
