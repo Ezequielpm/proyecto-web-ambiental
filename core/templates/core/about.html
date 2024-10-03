@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'core/styles/about.css' %}" />
   </head>
   <body>
+    
     <header>
       <nav class="navbar">
         <div data-aos="fade-in" class="nav-left">
@@ -18,7 +19,7 @@
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
-                href="#"
+                href="{% url 'articulo-list' %}"
                 >Inicio</a
               >
             </li>
@@ -27,27 +28,33 @@
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
-                href="#"
-                >Nosotros</a
+                href="{% url 'articulos-view-all' %}"
+                >Ver articulos</a
               >
             </li>
           </ul>
         </div>
         <div data-aos="fade-in" class="nav-right">
           <ul>
+
+            {% if not request.user.is_authenticated %}
+            
             <li>
-              <button class="btnLogin-popup">Inicia sesión</button>
+              <button class="btnLogin-popup" onclick="window.location.href='{% url 'login' %}'">Inicia sesión</button>
             </li>
+            
             <li>
               <a
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
                 id="nav-perfil"
-                href="#"
-                >Perfil</a
+                href="{% url 'signup' %}"
+                >Registrarse</a
               >
             </li>
+            
+            {% endif %}
           </ul>
         </div>
       </nav>
@@ -66,7 +73,7 @@
           <button class="start-btn">Comenzar a intercambiar</button>
         </div>
         <div class="image">
-            <img src="../assets/image.png" alt="Imagen de un intercambio">
+            <img src="{% static 'core/assets/image.png' %}" alt="Imagen de un intercambio">
         </div>
       </section>
 
@@ -78,26 +85,26 @@
         <div class="container-team">
             <div class="people-container">
                 <div class="people">
-                    <img src="../assets/Kevin.png" alt="memoji de Kevin">
+                    <img src="{% static 'core/assets/kevin.png' %}" alt="memoji de Kevin">
                 </div>
                 <h3>Kevin Baizabal</h3>
             </div>
             <div class="people-container">
                 <div class="people">
-                    <img src="../assets/Ezequiel.png" alt="memoji de Ezequiel">
+                    <img src="{% static 'core/assets/Ezequiel.png' %}" alt="memoji de Ezequiel">
                 </div>
                 <h3>Ezequiel Peña</h3>
             </div>
             <div class="people-container">
                 <div class="people">
-                    <img src="../assets/guisella.png" alt="memoji de Guisella">
+                    <img src="{% static 'core/assets/guisella.png' %}" alt="memoji de Guisella">
                 </div>
                 <h3>Guisella Chilel</h3>
             </div>
            
             <div class="people-container">
                 <div class="people">
-                    <img src="../assets/Mario.png" alt="memoji de Mario">
+                    <img src="{% static 'core/assets/Mario.png' %}" alt="memoji de Mario">
                 </div>
                 <h3>Mario Moreno</h3>
             </div>
