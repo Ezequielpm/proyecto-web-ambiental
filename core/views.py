@@ -32,7 +32,7 @@ class ArticuloDetailView(DetailView):
         # Obtener el artículo actual
         articulo = self.object
         # Obtener artículos relacionados (puedes ajustar la lógica según tus necesidades)
-        related_articulos = Articulo.objects.exclude(pk=articulo.pk).order_by('?')[:3]  # 3 artículos aleatorios
+        related_articulos = Articulo.objects.exclude(pk=articulo.pk).order_by('?')[:9]  # 3 artículos aleatorios
         context['related_articulos'] = related_articulos
         for articulo in context['related_articulos']:
             articulo.tiempo_transcurrido = timesince(articulo.fecha_subida)  # Tiempo desde la subida

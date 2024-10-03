@@ -48,6 +48,8 @@
     height: auto;
     border-radius: 10px;
   }
+
+  
   
   .image-thumbnails {
     display: flex;
@@ -156,3 +158,11 @@
     }
   }
   
+  .zoom {
+    transition: transform 0.3s ease; 
+  }
+  
+  .zoom:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+  }
