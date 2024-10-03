@@ -153,9 +153,13 @@
           {% for articulo in articulos %}
           <div class="card">
             
-            {% if articulo.imagen %}
+            
             <div class="card-img">
-            <img src="{{ articulo.imagen.url }}" alt="" />
+              {% if articulo.imagen %}
+              <img src="{{articulo.imagen.url}}" alt="image1" class="zoom" data-articulo-id="{{articulo.pk}}"/>
+              {% else %}
+              <h2 class="no-images">No hay imagenes disponibles</h2>
+              {% endif %}
 
               {% comment %} <img src="{{ articulo.imagen.url }}" alt="" /> {% endcomment %}
               <button type="button" class="like-icon">
@@ -175,7 +179,7 @@
                 </svg>
               </button>
             </div>
-            {% endif %}
+            
               
             
             <div class="card-content">
