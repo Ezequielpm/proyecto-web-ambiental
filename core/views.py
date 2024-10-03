@@ -55,3 +55,6 @@ class ArticuloCreateView(CreateView):
     def form_valid(self, form):
         form.instance.usuario = self.request.user  # Asignar el usuario actual al artículo
         return super().form_valid(form)
+    
+def nosotros(request):
+    return render(request,'core/about.html')    
