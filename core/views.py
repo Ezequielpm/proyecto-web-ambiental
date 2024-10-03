@@ -42,7 +42,7 @@ class ArticuloViewAll(ListView):
     model = Articulo
     template_name = 'core/articulos_listado.html'
     context_object_name = 'articulos'
-    paginate_by = 4    
+    paginate_by = 16    
     ordering = ['-fecha_subida']
 
 
