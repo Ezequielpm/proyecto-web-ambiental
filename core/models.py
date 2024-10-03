@@ -10,7 +10,7 @@ class Articulo(models.Model):
     ubicacion = models.CharField(max_length=100)
     fecha_subida = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
-    imagen = models.ImageField(upload_to='articulos/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='articulos/', null=False, blank=False)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=False,blank=False)
 
     def __str__(self):
