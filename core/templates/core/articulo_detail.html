@@ -32,6 +32,8 @@
               <!-- Imagen del artículo -->
               {% if articulo.imagen %}
               <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4 zoom" alt="{{ articulo.nombre }}">
+              {% else %}
+              <p>No hay imagenes disponibles</p>
               {% endif %}
               <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
               <h2 class="mb-3">{{ articulo.nombre }}</h2>
