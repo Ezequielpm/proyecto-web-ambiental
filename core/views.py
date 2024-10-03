@@ -4,6 +4,8 @@ from .models import Articulo
 from django.views.generic.edit import CreateView
 from .forms import ArticuloForm
 from django.urls import reverse_lazy
+from django.utils.timezone import now
+from django.utils.timesince import timesince
 # Create your views here.
 def inicio(request):
     return render(request,'core/index.html');
@@ -24,6 +26,17 @@ class ArticuloDetailView(DetailView):
     model = Articulo
     template_name = 'core/articulo_detail.html'
     context_object_name = 'articulo'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Obtener el artículo actual
+        articulo = self.object
+        # Obtener artículos relacionados (puedes ajustar la lógica según tus necesidades)
+        related_articulos = Articulo.objects.exclude(pk=articulo.pk).order_by('?')[:3]  # 3 artículos aleatorios
+        context['related_articulos'] = related_articulos
+        for articulo in context['related_articulos']:
+            articulo.tiempo_transcurrido = timesince(articulo.fecha_subida)  # Tiempo desde la subida
+        return context
 
 class ArticuloViewAll(ListView):
     model = Articulo
