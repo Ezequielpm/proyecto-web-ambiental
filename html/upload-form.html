@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Form</title>
+    <link rel="stylesheet" href="../styles/upload-form.css">
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="post" enctype="multipart/form-data"> <!-- el método enctype sirve para subir archivos a través del form (para las images)-->
+            <h2>Subir Archivo</h2>
+
+            <!-- Campo para subir imagen -->
+            <div class="upload-section">
+                <label for="file-upload" class="custom-file-upload">
+                   Selecciona un archivo aquí
+                </label>
+                <input type="file" id="file-upload" name="file-upload" accept="image/*">
+            </div>
+
+            <!-- Campo para el título -->
+            <div class="input-item">
+                <label for="title">Título</label>
+                <input type="text" id="title" name="title" placeholder="Escribe el título...">
+            </div>
+
+            <!-- Campo para el nombre -->
+            <div class="input-item">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Escribe el nombre...">
+            </div>
+
+            <!-- Campo para la ubicación -->
+            <div class="input-item">
+                <label for="location">Ubicación</label>
+                <input type="text" id="location" name="location" placeholder="Escribe la ubicación...">
+            </div>
+
+            <button type="submit" class="confirm-btn">Confirmar</button>
+            <button type="button" class="cancel-btn">Cancelar</button>
+        </form>
+    </div>
+</body>
+</html>
