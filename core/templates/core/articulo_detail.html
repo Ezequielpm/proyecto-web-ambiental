@@ -39,15 +39,18 @@
               <h2 class="mb-3">{{ articulo.nombre }}</h2>
               <p class="text-muted">Subido por: {{ articulo.usuario.username }}</p>
               <p class="text-muted">Publicado el: {{ articulo.fecha_subida }}</p>
+              {% if articulo.usuario.email %}
               <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email }}</p>
-  
+              {% else %}
+              <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto</p>
+              {% endif %}
               <h4>Descripción:</h4>
               <p>{{ articulo.descripcion }}</p>
   
-              <div class="d-flex justify-content-center">
+              <!--<div class="d-flex justify-content-center">
                   <a href="#" class="btn btn-primary me-2">Me gusta</a>
                   <a href="#" class="btn btn-info">Hablar con el dueño</a>
-              </div>
+              </div> -->
           </div>
       </div>
   
