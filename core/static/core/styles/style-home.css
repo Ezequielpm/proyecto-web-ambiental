@@ -185,6 +185,7 @@ header {
   padding-top: 40px;
   margin: 0 90px 0 0;
   max-width: 600px;
+  display: none;
 }
 
 
