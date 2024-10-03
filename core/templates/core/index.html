@@ -28,7 +28,7 @@
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 class="nav-item"
-                href="#"
+                href="{% url 'nosotros' %}"
                 >Nosotros</a
               >
             </li>
@@ -78,7 +78,7 @@
             <li>
               <form id="logout-form" method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button type="submit" data-aos="zoom-in" data-aos-duration="2000" class="nav-item" role="link" >Salir</button>
+                <button type="submit" data-aos="zoom-in" data-aos-duration="2000" class="nav-item" role="link" >Cerrar sesión</button>
               </form>
               {% comment %} <a
                 data-aos="zoom-in"
