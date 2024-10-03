@@ -23,11 +23,15 @@
 
     </style>
     <div class="container mt-5">
+      <a href="{% url 'articulo-list' %}" class="btn btn-secondary mb-4">Volver a la Vista Principal</a>
+
       <div class="row justify-content-center">
+
           <div class="col-md-8 text-center">
+                
               <!-- Imagen del artículo -->
               {% if articulo.imagen %}
-              <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4" alt="{{ articulo.nombre }}">
+              <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4 zoom" alt="{{ articulo.nombre }}">
               {% endif %}
               <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
               <h2 class="mb-3">{{ articulo.nombre }}</h2>
