@@ -288,18 +288,22 @@ header {
   justify-content: center;
   align-items: center;
 }
-#button-see-all{
-  width: auto;
-  height: auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(255, 255, 255);
-  font-size: 24px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
+#button-see-all {
+  width: 8rem;
+  height: 3rem;
+  border-radius: 1.875rem;
+  border: 0.125rem solid white;
+  background-color: #162938;
+  color: white;
+  font-size: 1.1rem;
+  font-family: var(--font-family);
+  font-weight: 500;
+  transition: .5s;
 }
 
-#button-see-all:hover{
-  background-color: aquamarine;
+#button-see-all:hover {
+  background: #fff;
+  border: 0.125rem solid #162938;
+  color: #162938;
   cursor: pointer;
 }
