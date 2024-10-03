@@ -151,7 +151,7 @@
             <div class="card-content">
               <h2 class="item-name">{{articulo.nombre}}</h2>
               <p class="item-location">{{articulo.ubicacion}}</p>
-              <p class="item-datetime">{{articulo.fecha_subida}}</p>
+              <p class="item-datetime" style="padding: 20px;">{{articulo.fecha_subida}}</p>
               <button type="button" class="arrow-icon" onclick="location.href='{% url 'articulo-detail' articulo.pk %}'">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
