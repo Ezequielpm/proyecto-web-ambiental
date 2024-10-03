@@ -6,66 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalles del Artículo</title>
     <link rel="stylesheet" href="{% static 'core/styles/product-details.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    <div class="product-container">
-      <div class="breadcrumb">
-        <a href="{% url 'articulo-list' %}">Home</a> / <a href="#">Intercambio</a> / {{articulo.nombre}}
+    <style>
+     .card {
+    height: 350px; /* Altura fija para las tarjetas */
+    width: 100%;   /* Ancho completo dentro de la columna */
+}
+
+.card-img-top {
+    height: 200px; /* Altura fija para las imágenes */
+
+    object-fit: contain; /* Asegura que la imagen cubra el área sin distorsionarse (el cover) */
+}
+
+    </style>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+              <!-- Imagen del artículo -->
+              {% if articulo.imagen %}
+              <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4" alt="{{ articulo.nombre }}">
+              {% endif %}
+              <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
+              <h2 class="mb-3">{{ articulo.nombre }}</h2>
+              <p class="text-muted">Subido por: {{ articulo.usuario.username }}</p>
+              <p class="text-muted">Publicado el: {{ articulo.fecha_subida }}</p>
+              <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email }}</p>
+  
+              <h4>Descripción:</h4>
+              <p>{{ articulo.descripcion }}</p>
+  
+              <div class="d-flex justify-content-center">
+                  <a href="#" class="btn btn-primary me-2">Me gusta</a>
+                  <a href="#" class="btn btn-info">Hablar con el dueño</a>
+              </div>
+          </div>
       </div>
-
-      <div class="product-grid">
-        <div class="product-images">
-          <div class="main-image">
-            
-            {% if articulo.imagen %}
-            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
-            {% endif %}
-              
+  
+      <h3 class="mt-5">Artículos relacionados</h3>
+      <div class="row">
+          {% for related_articulo in related_articulos %}
+          <div class="col-md-4">
+              <div class="card mb-3">
+                {% if related_articulo.imagen %}
+                  <img src="{{ related_articulo.imagen.url }}" class="card-img-top" alt="{{ related_articulo.nombre }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ related_articulo.nombre }}</h5>
+                    <p class="text-muted">Publicado hace: {{ related_articulo.tiempo_transcurrido }}</p> <!-- Tiempo transcurrido -->
+                    <a href="{% url 'articulo-detail' related_articulo.id %}" class="btn btn-primary">Ver más</a>
+                </div>
+              </div>
           </div>
-          <div class="image-thumbnails">
-            
-            {% if articulo.imagen %}
-            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
-            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
-            <img src="{{ articulo.imagen.url }}" alt="{{ articulo.nombre }}" />
-            {% else %}
-            <h2 style="text-align: center; color: red;">No hay imagenes disponibles</h2>
-            {% endif %}
-            
-              
-            
-          </div>
-        </div>
-
-        <div class="product-info">
-          <h1 class="product-title">{{articulo.nombre}}</h1>
-          <p class="product-user">Subido por: {{articulo.usuario}}</p>
-          <p class="product-date">Publicado el: {{articulo.fecha_subida}}</p>
-          <p class="product-description">
-            {% comment %} {{ articulo.descripcion }} {% endcomment %}
-          </p>
-
-          <div class="contact-info">
-            <h3>Contacto del dueño:</h3>
-            <p>
-              Correo electrónico:
-              <a href="#">juan.perez@example.com</a>
-            </p>
-          </div>
-
-          <div class="product-actions">
-            <button class="like-button">Me gusta</button>
-            <button class="contact-button">Hablar con el dueño</button>
-          </div>
-        </div>
+          {% empty %}
+          <p>No hay artículos relacionados disponibles.</p>
+          {% endfor %}
       </div>
-
-      <div class="product-details">
-        <h2>Descripción:</h2>
-        <p>
-          {{articulo.descripcion}}
-        </p>
-      </div> 
     </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
