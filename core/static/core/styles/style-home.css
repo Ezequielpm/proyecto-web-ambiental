@@ -4,7 +4,6 @@
 }
 
 html {
-
   scroll-behavior: smooth; /*para desplazamientos suaves*/
 }
 
@@ -54,7 +53,7 @@ header {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar ul li form button{
+.navbar ul li form button {
   color: black;
   text-decoration: none;
   text-align: center;
@@ -118,7 +117,6 @@ header {
 .title-shadow {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin: 0;
-
 }
 
 .text-shadow {
@@ -126,7 +124,8 @@ header {
   margin: 0;
 }
 
-.button-container{ /* pendiente checar como centrar el button*/
+.button-container {
+  /* pendiente checar como centrar el button*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,7 +143,6 @@ header {
   bottom: 70px;
   border: none;
 }
-
 
 .content-section {
   padding: 50px 20px;
@@ -169,7 +167,7 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.product-section__title{
+.product-section__title {
   margin: 40px 0 0;
   padding-left: 90px;
   color: black;
@@ -187,7 +185,6 @@ header {
   max-width: 600px;
   display: none;
 }
-
 
 .card-container {
   display: flex;
@@ -217,7 +214,7 @@ header {
   object-fit: cover;
 }
 
-.no-images h2{
+.no-images h2 {
   text-align: center;
   color: blueviolet;
 }
@@ -249,7 +246,7 @@ header {
   margin: 0 5px 5px;
 }
 
-.item-location{
+.item-location {
   color: gray;
   margin-bottom: 5px;
 }
@@ -270,10 +267,9 @@ header {
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;
-  
 }
 
-.svg-heart-icon{
+.svg-heart-icon {
   stroke: white;
 }
 
@@ -281,25 +277,29 @@ header {
   stroke: white;
 }
 
-.footer{
+.footer {
   height: 100px;
   /* width: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#button-see-all{
-  width: auto;
-  height: auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(255, 255, 255);
-  font-size: 24px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
+#button-see-all {
+  width: 8rem;
+  height: 3rem;
+  border-radius: 1.875rem;
+  border: 0.125rem solid white;
+  background-color: #162938;
+  color: white;
+  font-size: 1.1rem;
+  font-family: var(--font-family);
+  font-weight: 500;
+  transition: .5s;
 }
 
-#button-see-all:hover{
-  background-color: aquamarine;
+#button-see-all:hover {
+  background: #fff;
+  border: 0.125rem solid #162938;
+  color: #162938;
   cursor: pointer;
 }
