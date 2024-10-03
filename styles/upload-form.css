@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #162938f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,23 +74,23 @@ h2 {
     font-size: 16px;
     margin-top: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 1.875rem;
     cursor: pointer;
 }
 
 .confirm-btn {
-    background-color: #007BFF;
+    background-color: black;
     color: white;
 }
 
 .cancel-btn {
-    background-color: #ccc;
+    background-color: #afafaf;
 }
 
 .confirm-btn:hover {
-    background-color: #0056b3;
+    background-color: #167b4e;
 }
 
 .cancel-btn:hover {
-    background-color: #999;
+    background-color: #ff4e4e;
 }
