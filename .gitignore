@@ -1,3 +1,4 @@
 #Ignorar archivos de macOS innecesarios 
 .DS_Store
 python
+db.sqlite3
