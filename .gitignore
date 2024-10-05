@@ -1,4 +1,6 @@
 #Ignorar archivos de macOS innecesarios 
 .DS_Store
-python
 db.sqlite3
+# Ignorar archivos de caché de Python
+__pycache__/
+*.py[cod]
