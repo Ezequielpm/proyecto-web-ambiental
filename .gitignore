@@ -4,3 +4,10 @@ db.sqlite3
 # Ignorar archivos de caché de Python
 __pycache__/
 *.py[cod]
+venv/
+env/
+.venv/
+# Ignorar archivos estáticos generados
+static/
+# Ignorar archivos subidos por usuarios
+media/
