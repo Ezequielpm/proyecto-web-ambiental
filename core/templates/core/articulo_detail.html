@@ -28,32 +28,33 @@
       <div class="row justify-content-center">
 
           <div class="col-md-8 text-center">
-                
+
               <!-- Imagen del artículo -->
               {% if articulo.imagen %}
               <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4 zoom" alt="{{ articulo.nombre }}">
               {% else %}
               <p>No hay imagenes disponibles</p>
               {% endif %}
-              <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
               <h2 class="mb-3">{{ articulo.nombre }}</h2>
               <p class="text-muted">Subido por: {{ articulo.usuario.username }}</p>
+              <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
               <p class="text-muted">Publicado el: {{ articulo.fecha_subida }}</p>
               {% if articulo.usuario.email %}
-              <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email }}</p>
+              <!-- <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email }}</p> -->
+              <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto o lo tiene oculto.</p>
               {% else %}
-              <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto</p>
+              <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto.</p>
               {% endif %}
               <h4>Descripción:</h4>
               <p>{{ articulo.descripcion }}</p>
-  
+
               <!--<div class="d-flex justify-content-center">
                   <a href="#" class="btn btn-primary me-2">Me gusta</a>
                   <a href="#" class="btn btn-info">Hablar con el dueño</a>
               </div> -->
           </div>
       </div>
-  
+
       <h3 class="mt-5">Artículos relacionados</h3>
       <div class="row">
           {% for related_articulo in related_articulos %}
@@ -74,7 +75,7 @@
           {% endfor %}
       </div>
     </div>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
