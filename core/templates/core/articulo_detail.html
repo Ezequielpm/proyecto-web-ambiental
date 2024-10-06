@@ -40,7 +40,12 @@
                 <p class="text-muted">Subido por: {{ articulo.usuario.username }}</p>
                 <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
                 <p class="text-muted">Publicado el: {{ articulo.fecha_subida }}</p>
-                <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email|default:"El usuario no cuenta con un contacto." }}</p>
+                {% if user.is_authenticated %}
+                <!-- <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email|default:"El usuario no cuenta con un contacto." }}</p> -->
+                <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto o lo tiene oculto.</p>
+                {% else %}
+                <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto.</p>
+                {% endif %}
                 <h4>Descripción:</h4>
                 <p>{{ articulo.descripcion }}</p>
             </div>
