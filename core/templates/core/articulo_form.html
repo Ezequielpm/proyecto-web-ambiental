@@ -4,78 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecotrueques | Subir articulo</title>
+    <title>Ecotrueques | Subir artículo</title>
     <link rel="stylesheet" href="{% static 'core/styles/upload.css' %}" />
+    <script>
+        function updateFileInput() {
+            const fileInput = document.getElementById('file-upload');
+            const feedbackContainer = document.getElementById('file-feedback');
+
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                feedbackContainer.textContent = `Archivo seleccionado: ${fileName}`;
+                feedbackContainer.style.color = "green"; // Cambia el color del texto a verde
+            } else {
+                feedbackContainer.textContent = ""; // Limpia el mensaje si no hay archivo
+            }
+        }
+    </script>
 </head>
 <body>
     <style>
-        textarea{
+        textarea {
             width: 100%;
             height: 150px;
             resize: none;
         }
-        .text-danger{
+        .text-danger {
             color: red;
         }
     </style>
 
-
     <div class="container">
-   <h2>Subir un nuevo artículo</h2>
+        <h2>Subir un nuevo artículo</h2>
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <!-- Campo para subir imagen -->
-    <div class="upload-section">
-        <label for="file-upload" class="custom-file-upload">
-           Selecciona un archivo aquí
-        </label>
-        <input type="file" name="imagen" class="form-control-file" id="file-upload">
-      {% if form.imagen.errors %}
-        <div class="text-danger">
-          {{ form.imagen.errors }}
-        </div>
-      {% endif %}
+            <!-- Campo para subir imagen -->
+            <div class="upload-section">
+                <label for="file-upload" class="custom-file-upload">
+                    Selecciona un archivo aquí
+                </label>
+                <input type="file" name="imagen" class="form-control-file" id="file-upload" onchange="updateFileInput()">
+                {% if form.imagen.errors %}
+                    <div class="text-danger">
+                        {{ form.imagen.errors }}
+                    </div>
+                {% endif %}
+                <div id="file-feedback" style="margin-top: 10px;"></div> <!-- Contenedor para feedback -->
+            </div>
+            
+            <!-- Campo para el título -->
+            <div class="input-item">
+                <label for="title">Título</label>
+                <input type="text" name="nombre" class="form-control" id="title" value="{{ form.nombre.value|default_if_none:'' }}">
+                {% if form.nombre.errors %}
+                    <div class="text-danger">
+                        {{ form.nombre.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Campo para la descripción -->
+            <div class="input-item">
+                <label for="caption">Descripción</label>
+                <textarea name="descripcion" class="form-control" id="caption">{{ form.descripcion.value|default_if_none:'' }}</textarea>
+                {% if form.descripcion.errors %}
+                    <div class="text-danger">
+                        {{ form.descripcion.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Campo para la ubicación -->
+            <div class="input-item">
+                <label for="location">Ubicación</label>
+                <input type="text" name="ubicacion" class="form-control" id="location" value="{{ form.ubicacion.value|default_if_none:'' }}">
+                {% if form.ubicacion.errors %}
+                    <div class="text-danger">
+                        {{ form.ubicacion.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="confirm-btn">Confirmar</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'articulo-list' %}'">Cancelar</button>
+        </form>
     </div>
-    
-     <!-- Campo para el título -->
-     <div class="input-item">
-        <label for="title">Título</label>
-        <input type="text" name="nombre" class="form-control" id="title" value="{{ form.nombre.value|default_if_none:'' }}">
-      {% if form.nombre.errors %}
-        <div class="text-danger">
-          {{ form.nombre.errors }}
-        </div>
-      {% endif %}
-    </div>
-
-    <!-- Campo para la descripción -->
-
-    <div class="input-item">
-        <label for="name">Descripción</label>
-        <textarea name="descripcion" class="form-control" id="caption">{{ form.descripcion.value|default_if_none:'' }}</textarea>
-      {% if form.descripcion.errors %}
-        <div class="text-danger">
-          {{ form.descripcion.errors }}
-        </div>
-      {% endif %}
-    </div>
-
-    <!-- Campo para la ubicación -->
-    <div class="input-item">
-        <label for="location">Ubicación</label>
-        <input type="text" name="ubicacion" class="form-control" id="location" value="{{ form.ubicacion.value|default_if_none:'' }}">
-      {% if form.ubicacion.errors %}
-        <div class="text-danger">
-          {{ form.ubicacion.errors }}
-        </div>
-      {% endif %}
-    </div>
-
-    <button type="submit" class="confirm-btn">Confirmar</button>
-    <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'articulo-list' %}'">Cancelar</button>
-  </form>
-</div>
 </body>
 </html>
