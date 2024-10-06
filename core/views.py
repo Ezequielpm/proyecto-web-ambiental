@@ -100,18 +100,56 @@ def nosotros(request):
 from .models import Mensaje
 from .forms import MessageForm
 
+from django.db.models import Q
+
 class MessageThreadView(View):
     def get(self, request, articulo_id):
         articulo = get_object_or_404(Articulo, pk=articulo_id)
-        messages = Mensaje.objects.filter(articulo=articulo)
+        
+        # Filtrar todos los mensajes entre el usuario logueado y el dueño del artículo
+        messages = Mensaje.objects.filter(
+            articulo=articulo
+        ).filter(
+            Q(sender=request.user) | Q(receiver=request.user) | Q(sender=articulo.usuario) | Q(receiver=articulo.usuario)
+        )
+
+        # Verificar si el usuario está en la conversación
+        user_in_conversation = messages.filter(
+            Q(sender=request.user) | Q(receiver=request.user)
+        ).exists()  # Comprueba si el usuario tiene mensajes en la conversación
+
         form = MessageForm()  # Asegúrate de inicializar el formulario
         return render(request, 'core/message_thread.html', {
             'articulo': articulo,
             'messages': messages,
             'form': form,  # Pasar el formulario al contexto
+            'user_in_conversation': user_in_conversation,  # Variable booleana
         })
 
 
+
+# from django.db.models import Q
+# class MessageThreadView(View):
+#     def get(self, request, articulo_id):
+#         articulo = get_object_or_404(Articulo, pk=articulo_id)
+#         messages = Mensaje.objects.filter(
+#             articulo=articulo
+#         ).filter(
+#             Q(sender=request.user) | 
+#             Q(receiver=request.user)
+#         )
+        
+#         user_in_conversation = messages.filter(
+#             Q(sender=request.user) | Q(receiver=request.user)
+#         ).exists()  # Verifica si hay mensajes relacionados al usuario
+
+#         form = MessageForm()
+#         return render(request, 'core/message_thread.html', {
+#             'articulo': articulo,
+#             'messages': messages,
+#             'form': form,
+#             'user_in_conversation': user_in_conversation,  # Agregar variable booleana
+#         })
 
 from .models import Mensaje  # Asegúrate de que el modelo Mensaje esté importado
 from .forms import MessageForm # Asegúrate de que el formulario Mensaje esté importado

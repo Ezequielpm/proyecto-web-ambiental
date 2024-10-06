@@ -26,31 +26,37 @@
         <a href="{% url 'articulo-detail' articulo.pk %}" class="btn btn-secondary mb-4">Volver al Artículo</a>
 
         <h2 class="mb-4">Conversación con {{ articulo.usuario.username }}</h2>
-
+        
+            {% if user_in_conversation %}
+                <!-- El usuario está en los mensajes -->
+                <p>{{ request.user.username }} está en la conversación.</p>
+            
+        {% else %}
+            <p>No hay mensajes en esta conversación.</p>
+        {% endif %}
         <div class="message-container">
+            {% if user_in_conversation %}
             {% for mensaje in messages %}
-                
-                
-                {% if mensaje.sender %}
-                <div class="message {% if mensaje.sender == user %}sent{% endif %}">
-                    <strong>{{ mensaje.sender.username }}:</strong>
-                    <p>{{ mensaje.content }}</p>
-                    <p class="text-muted">{{ mensaje.timestamp }}</p>
-                </div>
-                {% else %}
-               
-                <div class="message receiver">
-                
-                    <strong>{{ mensaje.receiver.username }}:</strong>
-                    <p>{{ mensaje.content }}</p>
-                    <p class="text-muted">{{ mensaje.timestamp }}</p>
-                </div>
-                {% endif %}
-                
-            {% empty %}
+                 {% if mensaje.sender %}
+                        <div class="message {% if mensaje.sender == user %}sent{% endif %}">
+                            <strong>{{ mensaje.sender.username }}:</strong>
+                            <p>{{ mensaje.content }}</p>
+                            <p class="text-muted">{{ mensaje.timestamp }}</p>
+                        </div>
+                  {% else %}
+                        <div class="message receiver">
+                            <strong>{{ mensaje.receiver.username }}:</strong>
+                            <p>{{ mensaje.content }}</p>
+                            <p class="text-muted">{{ mensaje.timestamp }}</p>
+                        </div>
+                 {% endif %}
+                {% empty %}
                 <p>No hay mensajes en esta conversación.</p>
+                
             {% endfor %}
+            {% endif %}
         </div>
+        
         <form action="{% url 'send_message' articulo.id %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}  <!-- Esto renderiza los campos del formulario automáticamente -->
