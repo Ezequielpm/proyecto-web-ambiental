@@ -32,7 +32,7 @@
             <div class="col-md-8 text-center">
                 <!-- Imagen del artículo -->
                 {% if articulo.imagen %}
-                <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4 zoom" alt="{{ articulo.nombre }}">
+                <img src="{{ articulo.imagen.url }}" class="img-fluid mb-4 zoom" style="max-width: 420px; max-height: 420px;" alt="{{ articulo.nombre }}">
                 {% else %}
                 <p>No hay imágenes disponibles</p>
                 {% endif %}
