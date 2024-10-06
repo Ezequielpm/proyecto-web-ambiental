@@ -37,12 +37,12 @@ class ArticuloDetailView(DetailView):
         articulo = self.object
         related_articulos = Articulo.objects.exclude(pk=articulo.pk).order_by('?')[:9]
         
-        # Obtén los comentarios asociados al artículo
-        comentarios = Comentario.objects.filter(articulo=articulo).order_by('-fecha_creacion')
+       
+        comentarios = Comentario.objects.filter(articulo=articulo).order_by('fecha_creacion')
         
         context['related_articulos'] = related_articulos
         context['comentarios'] = comentarios
-        context['form'] = ComentarioForm()  # Asegúrate de pasar el formulario también
+        context['form'] = ComentarioForm()  
         for articulo in context['related_articulos']:
             articulo.tiempo_transcurrido = timesince(articulo.fecha_subida)
 
@@ -55,11 +55,11 @@ class ArticuloDetailView(DetailView):
         if form.is_valid():
             comentario = form.save(commit=False)
             comentario.articulo = articulo
-            comentario.usuario = request.user  # Asigna el usuario actual al comentario
+            comentario.usuario = request.user  # Asignar el usuario actual al comentario
             comentario.save()
-            return redirect('articulo-detail', pk=articulo.pk)  # Redirige a la misma página del artículo
+            return redirect('articulo-detail', pk=articulo.pk)  # Redirigir a la misma página del artículo
 
-        # Si el formulario no es válido, puedes volver a mostrar el artículo con el formulario
+        # Si el formulario no es válido, se muestra de nuevo el formulario
         return self.get(request, *args, **kwargs)
 
 
