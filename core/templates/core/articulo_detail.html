@@ -43,6 +43,7 @@
                 {% if user.is_authenticated %}
                 <!-- <p class="text-muted">Contacto del dueño: {{ articulo.usuario.email|default:"El usuario no cuenta con un contacto." }}</p> -->
                 <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto o lo tiene oculto.</p>
+                <a href="{% url 'message_thread' articulo.id %}" class="btn btn-success mt-3">Enviar Mensaje</a>
                 {% else %}
                 <p class="text-muted">Contacto del dueño: El usuario no cuenta con un contacto.</p>
                 {% endif %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse, redirect, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView,View
 from .models import Articulo, Comentario
 from django.views.generic.edit import CreateView
 from .forms import ArticuloForm
@@ -95,3 +95,49 @@ class ArticuloCreateView(CreateView):
     
 def nosotros(request):
     return render(request,'core/about.html')    
+
+
+from .models import Mensaje
+from .forms import MessageForm
+
+class MessageThreadView(View):
+    def get(self, request, articulo_id):
+        articulo = get_object_or_404(Articulo, pk=articulo_id)
+        messages = Mensaje.objects.filter(articulo=articulo)
+        form = MessageForm()  # Asegúrate de inicializar el formulario
+        return render(request, 'core/message_thread.html', {
+            'articulo': articulo,
+            'messages': messages,
+            'form': form,  # Pasar el formulario al contexto
+        })
+
+
+
+from .models import Mensaje  # Asegúrate de que el modelo Mensaje esté importado
+from .forms import MessageForm # Asegúrate de que el formulario Mensaje esté importado
+
+def send_message_view(request, articulo_id):
+    # Obtén el artículo antes de manejar el formulario
+    articulo = get_object_or_404(Articulo, pk=articulo_id)  # Obtén el artículo aquí
+
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            mensaje = form.save(commit=False)
+            mensaje.articulo_id = articulo_id  # Asignar el artículo relacionado
+            mensaje.sender = request.user  # Asignar el usuario actual
+            mensaje.receiver = articulo.usuario  # Asignar el dueño del artículo como receptor
+            mensaje.save()
+            return redirect('message_thread', articulo_id=articulo_id)
+        else:
+            # Si el formulario no es válido, se muestra nuevamente con errores
+            messages = Mensaje.objects.filter(articulo=articulo)  # Obtén los mensajes para este artículo
+            return render(request, 'core/message_thread.html', {
+                'articulo': articulo,
+                'messages': messages,
+                'form': form,  # Pasa el formulario con errores a la plantilla
+            })
+
+    return HttpResponse('Error al enviar el mensaje', status=400)
+
+

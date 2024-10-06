@@ -19,3 +19,14 @@ class ComentarioForm(forms.ModelForm):
         widgets = {
             'texto': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Escribe tu comentario aquí...'}),
         }        
+
+
+from .models import Mensaje
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Mensaje
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 2, 'placeholder': 'Escribe tu mensaje...'}),
+        }        
