@@ -1,5 +1,5 @@
 from django import forms
-from .models import Articulo
+from .models import Articulo, Comentario
 
 class ArticuloForm(forms.ModelForm):
     class Meta:
@@ -11,3 +11,11 @@ class ArticuloForm(forms.ModelForm):
             'ubicacion': forms.TextInput(attrs={'class': 'form-control'}),
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),  # Widget para archivo
         }
+        
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['texto']
+        widgets = {
+            'texto': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Escribe tu comentario aquí...'}),
+        }        

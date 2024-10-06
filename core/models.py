@@ -16,3 +16,11 @@ class Articulo(models.Model):
     def __str__(self):
         return self.nombre
 
+class Comentario(models.Model):
+    articulo = models.ForeignKey(Articulo, related_name='comentarios', on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    texto = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.articulo.nombre}"
