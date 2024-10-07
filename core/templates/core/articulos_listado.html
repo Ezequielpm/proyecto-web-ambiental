@@ -89,6 +89,13 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+            <form id="logout-form" method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="nav-link btn btn-dark" style="border: none; padding: 0;">Cerrar sesión</button>
+          </form>
+        </li>
             {% endif %}
           </ul>
         </div>
