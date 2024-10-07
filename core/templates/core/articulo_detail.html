@@ -85,7 +85,11 @@
                 <p>No hay imágenes disponibles</p>
                 {% endif %}
                 <h2 class="mb-3">{{ articulo.nombre }}</h2>
+                {% if articulo.usuario == request.user %}
+                <p class="text-muted">Subido por <strong>Tí</strong> </p>
+                {% else %}
                 <p class="text-muted">Subido por: {{ articulo.usuario.username }}</p>
+                {% endif %}
                 <p class="text-muted">Ubicación: {{ articulo.ubicacion }}</p>
                 <p class="text-muted">Publicado el: {{ articulo.fecha_subida }}</p>
                 {% if user.is_authenticated %}
@@ -107,7 +111,9 @@
                         <div class="card-body">
                             {% if articulo.usuario == comentario.usuario and not articulo.usuario == request.user %}
                             <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: rgb(19, 143, 19);">(Dueño)</strong></h5>
-                            {% elif comentario.usuario.is_staff %}
+                            {% elif comentario.usuario.is_staff and comentario.usuario == request.user %}
+                            <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: rgb(210, 69, 26);">(Admin)🕵🏻‍♂️<strong style="color: blue;">(Tú)</strong></strong></h5>
+                            {% elif comentario.usuario.is_staff and not comentario.user == request.user %}
                             <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: rgb(210, 69, 26);">(Admin)🕵🏻‍♂️</strong></h5>
                             {% elif comentario.usuario == request.user %}
                             <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: blue;">(Tú)</strong></h5>
