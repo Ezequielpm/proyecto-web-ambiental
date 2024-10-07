@@ -1,383 +1,162 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ecotrueques | Inicio</title>
-    <meta name="description" content="Intercambia artículos que ya no usas y encuentra cosas que te interesan. ¡Dale una segunda vida a tus objetos!">
-    <link rel="stylesheet" href="{% static 'core/styles/style-home.css' %}" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div data-aos="fade-in" class="nav-left">
-          <ul>
-            <li><img src="" alt="" class="logo" /></li>
-            <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="#"
-                >Inicio</a
-              >
-            </li>
-            <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="{% url 'nosotros' %}"
-                >Nosotros</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="nav-right">
-          <ul>
-            {% if not request.user.is_authenticated %}
-            <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="{% url 'login' %}"
-                >Iniciar sesion</a
-              >
-            </li>
-            <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="{% url 'signup' %}"
-                >Registro</a
-              >
-            </li>
-            {% else %}
-            <!--
-            <li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="#"
-                >Perfil</a
-              >
-            </li> -->
-            <li></li>
-              <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="{% url 'upload-articulo' %}"
-                >Subir articulo</a
-              >
-            </li>
-            <li>
-              <form id="logout-form" method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" data-aos="zoom-in" data-aos-duration="2000" class="nav-item" role="link" >Cerrar sesión</button>
-              </form>
-              {% comment %} <a
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                class="nav-item"
-                href="{% url 'logout' %}"
-                >Salir</a
-              > {% endcomment %}
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <section class="hero-section">
-        <div class="hero-content">
-          <h1
-            class="subtext-shadow"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-          >
-            Es tiempo de
-          </h1>
-          <h2 class="title-shadow" data-aos="fade-up" data-aos-duration="2000">
-            Reutilizar
-          </h2>
-          <p class="text-shadow" data-aos="fade-up" data-aos-duration="2000">
-            Dale nueva vida a tus artículos. ¡Cada intercambio es un paso hacia
-            un futuro más sostenible!
-          </p>
-          <div class="button-container">
-            <button
-              type="button"
-              onclick="location.href='#product-section'"
-              class="scroll-button"
-              data-aos="slide-up"
-              data-aos-duration="2000"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="svg-down-arrow-icon"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecotrueques - Página de Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'core/styles/style-home.css' %}"> <!-- Ruta a tu CSS -->
+</head>
+<body>
 
-      <!------------------Lista de artículos-------------------------->
-      <section id="product-section">
-
-        <div class="product-section-text-container">
-          <div>
-            <h2 class="product-section__title">Nuevos artículos</h2>
-          </div>
-          <div>
-            <p class="product-section__text">Aquí encontrarás tus artículos favoritos para intercambiar por alguno que ya no necesites. Recuerda, ¿para qué tirar si puedes reciclar?</p>
-          </div>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'articulo-list' %}">Ecotrueques</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articulo-list' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+              </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'upload-articulo' %}">Subir articulo</a>
+              </li>
+                <li class="nav-item mt-3">
+                  <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link btn btn-dark" style="border: none; padding: 0;">Cerrar sesión</button>
+                </form>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-        
+    </nav>
+</header>
 
-        <div class="card-container">
-          <!--------Carousel--------->
-          
-          {% for articulo in articulos %}
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">Bienvenido a Ecotrueques</h1>
+        <p class="lead">Intercambia tus artículos y da una nueva vida a lo que ya no usas.</p>
+    </div>
+</section>
+<style>
+  /* Asegura que todas las tarjetas tengan el mismo tamaño */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* La imagen debe ajustarse al contenedor */
+.card-img {
+    flex-grow: 1;
+    max-height: 200px; /* Ajusta la altura según lo necesario */
+    overflow: hidden;
+}
+
+.card-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajusta el cuerpo de la tarjeta para que se distribuya uniformemente */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+/* Establece una altura mínima para todas las tarjetas */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Asegura que las imágenes no distorsionen el diseño */
+.card-img {
+    height: 200px; /* Ajusta esta altura según lo que prefieras */
+    overflow: hidden;
+}
+
+.card-img img {
+    object-fit: cover; /* Mantiene la proporción de las imágenes */
+    width: 100%;
+    height: 100%;
+}
+
+/* Establece una altura mínima para el cuerpo de la tarjeta */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    min-height: 3em; /* Ajusta según la cantidad de texto */
+    line-height: 1.2em;
+}
+
+.card-text {
+    flex-grow: 1;
+    min-height: 4em; /* Para que el texto no cambie la altura de la tarjeta */
+}
+
+
+</style>
+
+<section class="container mt-5">
+  <h2 class="text-center" style="color: black;">Artículos disponibles</h2>
+  <div class="card-container row">
+      {% for articulo in articulos %}
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-left: auto; margin-right: auto; width: auto;">
           <div class="card">
-            
-            
-            <div class="card-img">
-              {% if articulo.imagen %}
-              <img src="{{articulo.imagen.url}}" alt="image1" class="zoom" data-articulo-id="{{articulo.pk}}"/>
-              {% else %}
-              <h2 class="no-images">No hay imagenes disponibles</h2>
-              {% endif %}
-
-              {% comment %} <img src="{{ articulo.imagen.url }}" alt="" /> {% endcomment %}
-              
-            </div>
-            
-              
-            
-            <div class="card-content">
-              <h2 class="item-name">{{articulo.nombre}}</h2>
-              <p class="item-location">{{articulo.ubicacion}}</p>
-              <p class="item-datetime" style="padding: 20px;">{{articulo.fecha_subida}}</p>
-              {% comment %} <a href="{% url 'articulo-detail' articulo.pk %}" type="button" class="arrow-icon"></a> {% endcomment %}
-              <button type="button" class="arrow-icon" onclick="location.href='{% url 'articulo-detail' articulo.pk %}'">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-arrow-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
+              <div class="card-img">
+                  <img src="{{ articulo.imagen.url }}" class="card-img-top" alt="{{ articulo.nombre }}" style="width: 90%; height: 200px; object-fit: contain; max-height: 240px;">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">{{ articulo.nombre }}</h5>
+                  <h5 class="card-title">{{ articulo.ubicacion }}</h5>
+                  <p class="card-text">{{ articulo.descripcion|truncatewords:15 }}</p>
+                  <a href="{% url 'articulo-detail' articulo.id %}" class="btn btn-secondary mt-auto">Ver detalles</a>
+              </div>
           </div>
-          {% endfor %}
-            
-          <!-- Container #1 -->
-          <!-- <div class="card">
-            <div class="card-img">
-              {% comment %} <img src="{{ articulo.imagen.url }}" alt="image1" /> {% endcomment %}
-              <button type="button" class="like-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-heart-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div class="card-content">
-              <h2 class="item-name">Artículo 1</h2>
-              <p class="item-location">Huixtla</p>
-              <p class="item-datetime">Hace 1 día</p>
-              <button type="button" class="arrow-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-arrow-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>--> 
+      </div>
+      {% empty %}
+      <p class="text-center">No hay artículos disponibles en este momento.</p>
+      {% endfor %}
+  </div>
+  <div class="text-center mt-4 mb-4" style="margin:auto;">
+    <a href="{% url 'articulos-view-all' %}" class="btn btn-primary" style="padding: 20px; margin: auto;">Ver todos los artículos</a> <!-- Botón para ver todos los artículos -->
+</div>
+</section>
 
-          <!-- Container #2 -->
-         <!-- <div class="card">
-            <div class="card-img">
-              {% comment %} <img src="../assets/img2.jpg" alt="image2" /> {% endcomment %}
-              <button type="button" class="like-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-heart-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div class="card-content">
-              <h2 class="item-name">Artículo 2</h2>
-              <p class="item-location">Mazatán</p>
-              <p class="item-datetime">Hace 7 días</p>
-            </div>
-            <button type="button" class="arrow-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="svg-arrow-icon"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                />
-              </svg>
-            </button>
-          </div>-->
 
-          <!-- Container #3 -->
-          <!--<div class="card">
-            <div class="card-img">
-              {% comment %} <img src="../assets/img3.jpg" alt="image3" /> {% endcomment %}
-              <button type="button" class="like-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-heart-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div class="card-content">
-              <h2 class="item-name">Artículo 3</h2>
-              <p class="item-location">Tapachula</p>
-              <p class="item-datetime">Hace 3 horas</p>
-              <button type="button" class="arrow-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-arrow-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div> -->
+<footer class="bg-dark text-white text-center py-4">
+    <p>&copy; 2024 Ecotrueques. Todos los derechos reservados.</p>
+</footer>
 
-          <!-- Container #1 -->
-         <!-- <div class="card">
-            <div class="card-img">
-              {% comment %} <img src="../assets/img1.jpg" alt="image1" /> {% endcomment %}
-              <button type="button" class="like-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-heart-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div class="card-content">
-              <h2 class="item-name">Artículo 4</h2>
-              <p class="item-location">Huixtla</p>
-              <p class="item-datetime">Hace 5 días</p>
-              <button type="button" class="arrow-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="svg-arrow-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>-->
-
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <button id="button-see-all" onclick="location.href='{% url 'articulos-view-all' %}'">Ver todos</button>
-    </footer>
-    <!-----------Librerías y Scripts----------->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="{% static 'core/scriptsjs/script.js' %}"></script>
-  </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
