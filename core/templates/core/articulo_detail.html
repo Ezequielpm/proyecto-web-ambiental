@@ -107,6 +107,8 @@
                         <div class="card-body">
                             {% if articulo.usuario == comentario.usuario and not articulo.usuario == request.user %}
                             <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: rgb(19, 143, 19);">(Dueño)</strong></h5>
+                            {% elif comentario.usuario.is_staff %}
+                            <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: rgb(210, 69, 26);">(Admin)🕵🏻‍♂️</strong></h5>
                             {% elif comentario.usuario == request.user %}
                             <h5 class="card-title">{{ comentario.usuario.username }} <strong style="color: blue;">(Tú)</strong></h5>
                             {% else %}
