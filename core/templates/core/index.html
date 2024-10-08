@@ -122,6 +122,16 @@
 }
 
 
+        .card-img-top {
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease; /* Transición suave */
+        }
+
+        /* Efecto de zoom al pasar el mouse */
+        .card-img-top:hover {
+            transform: scale(1.1); /* Escala la imagen al 110% */
+        }
 </style>
 
 <section class="container mt-5">
@@ -131,7 +141,9 @@
       <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-left: auto; margin-right: auto; width: auto;">
           <div class="card">
               <div class="card-img">
+                <a href="{% url 'articulo-detail' articulo.id %}">
                   <img src="{{ articulo.imagen.url }}" class="card-img-top" alt="{{ articulo.nombre }}" style="width: 90%; height: 200px; object-fit: contain; max-height: 240px;">
+                </a>
               </div>
               <div class="card-body">
                   <h5 class="card-title">{{ articulo.nombre }}</h5>
