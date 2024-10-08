@@ -179,3 +179,14 @@ def send_message_view(request, articulo_id):
     return HttpResponse('Error al enviar el mensaje', status=400)
 
 
+@login_required
+def profile_view(request):
+    #Obtener el usuario actual
+    user = request.user
+    # Obtener los artículos subidos por el usuario
+    user_articles = Articulo.objects.filter(usuario=user)
+    context = {
+        'user':user,
+        'user_articles':user_articles
+    }
+    return render(request,'core/profile.html',context)

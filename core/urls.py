@@ -6,7 +6,7 @@
 
 from django.urls import path
 from .views import ArticuloListView,ArticuloDetailView,ArticuloViewAll
-from .views import ArticuloCreateView,nosotros,eliminar_comentario,MessageThreadView,send_message_view
+from .views import ArticuloCreateView,nosotros,eliminar_comentario,MessageThreadView,send_message_view,profile_view
 
 urlpatterns = [
     path('', ArticuloListView.as_view(), name='articulo-list'),
@@ -17,5 +17,6 @@ urlpatterns = [
     path('comentario/eliminar/<int:comentario_id>/', eliminar_comentario, name='eliminar-comentario'),
     path('articulo/<int:articulo_id>/messages/', MessageThreadView.as_view(), name='message_thread'),
     path('articulo/<int:articulo_id>/send_message/', send_message_view, name='send_message'), 
+    path('perfil/',profile_view,name='profile'),
 ]
 
