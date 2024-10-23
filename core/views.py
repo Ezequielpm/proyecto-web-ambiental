@@ -67,11 +67,11 @@ class ArticuloDetailView(DetailView):
 def eliminar_comentario(request, comentario_id):
     comentario = get_object_or_404(Comentario, id=comentario_id)
 
-    # Asegurarte de que el usuario que intenta eliminar el comentario sea el que lo creó
+    
     if comentario.usuario == request.user:
         comentario.delete()
     
-    # Redirige a la misma página del artículo después de eliminar el comentario
+    # se redirige a la misma página del artículo después de eliminar el comentario
     return redirect('articulo-detail', pk=comentario.articulo.pk)
 
 
@@ -116,9 +116,9 @@ class MessageThreadView(View):
         # Verificar si el usuario está en la conversación
         user_in_conversation = messages.filter(
             Q(sender=request.user) | Q(receiver=request.user)
-        ).exists()  # Comprueba si el usuario tiene mensajes en la conversación
+        ).exists()  # se comprueba si el usuario tiene mensajes en la conversación
 
-        form = MessageForm()  # Asegúrate de inicializar el formulario
+        form = MessageForm()  
         return render(request, 'core/message_thread.html', {
             'articulo': articulo,
             'messages': messages,
@@ -151,29 +151,28 @@ class MessageThreadView(View):
 #             'user_in_conversation': user_in_conversation,  # Agregar variable booleana
 #         })
 
-from .models import Mensaje  # Asegúrate de que el modelo Mensaje esté importado
-from .forms import MessageForm # Asegúrate de que el formulario Mensaje esté importado
+from .models import Mensaje  
+from .forms import MessageForm 
 
 def send_message_view(request, articulo_id):
-    # Obtén el artículo antes de manejar el formulario
-    articulo = get_object_or_404(Articulo, pk=articulo_id)  # Obtén el artículo aquí
+    articulo = get_object_or_404(Articulo, pk=articulo_id)  
 
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid():
             mensaje = form.save(commit=False)
-            mensaje.articulo_id = articulo_id  # Asignar el artículo relacionado
-            mensaje.sender = request.user  # Asignar el usuario actual
-            mensaje.receiver = articulo.usuario  # Asignar el dueño del artículo como receptor
+            mensaje.articulo_id = articulo_id  
+            mensaje.sender = request.user  
+            mensaje.receiver = articulo.usuario 
             mensaje.save()
             return redirect('message_thread', articulo_id=articulo_id)
         else:
             # Si el formulario no es válido, se muestra nuevamente con errores
-            messages = Mensaje.objects.filter(articulo=articulo)  # Obtén los mensajes para este artículo
+            messages = Mensaje.objects.filter(articulo=articulo) 
             return render(request, 'core/message_thread.html', {
                 'articulo': articulo,
                 'messages': messages,
-                'form': form,  # Pasa el formulario con errores a la plantilla
+                'form': form,  # se pasa el formulario con errores a la plantilla
             })
 
     return HttpResponse('Error al enviar el mensaje', status=400)
@@ -181,9 +180,8 @@ def send_message_view(request, articulo_id):
 
 @login_required
 def profile_view(request):
-    #Obtener el usuario actual
     user = request.user
-    # Obtener los artículos subidos por el usuario
+    # se obtienen todos los artículos subidos por el usuario
     user_articles = Articulo.objects.filter(usuario=user)
     context = {
         'user':user,

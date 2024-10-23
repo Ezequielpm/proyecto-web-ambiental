@@ -22,9 +22,9 @@ class UserCreationFormWithEmail(UserCreationForm):
 #         fields = ['username', 'email', 'password1', 'password2']
 
 #     def save(self, commit=True):
-#         # Sobrescribe el método save para asegurarse de que el correo se guarde
+#        
 #         user = super().save(commit=False)
-#         user.email = self.cleaned_data['email']  # Asigna el correo del formulario al campo email del usuario
+#         user.email = self.cleaned_data['email']  
 #         if commit:
 #             user.save()
 #         return user

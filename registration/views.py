@@ -13,7 +13,7 @@ class SignUpView(CreateView):
         return reverse_lazy('login') + '?register'
     def get_form(self, form_class=None):
         form = super(SignUpView, self).get_form()
-        # Modificar en tiempo real
+        # Modificar en tiempo real los widgets
         form.fields['username'].widget = forms.TextInput(attrs={'class':'form-control mb-2','placeholder': 'Nombre de usuario'})
         form.fields['email'].widget = forms.EmailInput(attrs={'class':'form-control mb-2','placeholder': 'Correo electrónico'})
         form.fields['password1'].widget = forms.PasswordInput(attrs={'class':'form-control mb-2','placeholder': 'Contraseña'})

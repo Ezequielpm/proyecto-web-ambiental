@@ -4,7 +4,7 @@ from .models import Articulo, Comentario
 class ArticuloForm(forms.ModelForm):
     class Meta:
         model = Articulo
-        fields = ['nombre', 'descripcion', 'ubicacion', 'imagen']  # Agrega el campo 'imagen'
+        fields = ['nombre', 'descripcion', 'ubicacion', 'imagen'] 
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
