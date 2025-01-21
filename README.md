@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  Páginá de inicio del sitio web de <strong>Ecotrueques</strong>
+  Página de inicio del sitio web de <strong>Ecotrueques</strong>
 </p>
 
 ## Descripción 
