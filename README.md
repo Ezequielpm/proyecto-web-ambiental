@@ -35,7 +35,7 @@
 ## Tecnologías utilizadas
 
 <p>
-  Este es un proyecto simple pero funcional, se optó por usar <em>HTML y CSS</em>.
+  Este es un proyecto simple pero funcional, se optó por usar <em>HTML y CSS</em> para el Front-end.
   Para el Back-end se utilizó <em>Python</em>, especificamente <i>Django</i>, ya que se consideró una opción factible para el tamaño del proyecto.
   De igual forma se utilizó <i>Bootsrap</i> para ciertos detalles de la interfaz.
 </p>
