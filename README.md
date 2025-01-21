@@ -42,7 +42,7 @@
 
 ## **NOTA:**
 <i>Desde diciembre de 2024 el servidor que aloja este sitio web (PythonAnywhere) dejo de otorgar las credenciales necesarias para acceder de forma segura 
-(el protocolo HHTPS) por lo que es posible que al intertar acceder al sitio web reciba un mensaje advirtiendo que el sitio es inseguro, desde luego, usted es reponsable
+(el protocolo HHTPS) por lo que es posible que al intentar acceder al sitio web reciba un mensaje advirtiendo que el sitio es inseguro, desde luego, usted es reponsable
 de ingresar o no a la página, considere que las credenciales de Django de este sitio son públicas en este mismo repositorio.</i> <br>
 [Sitio web de Ecotrueques](https://www.ecotrueques.com)
 
