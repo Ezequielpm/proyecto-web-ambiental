@@ -1,4 +1,4 @@
 Pillow
-django==2.0.2
+django>=4.2,<4.3
 django-ckeditor==5.4.0
 gunicorn==22.0.0
