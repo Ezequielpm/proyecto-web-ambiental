@@ -4,3 +4,4 @@ django-ckeditor==5.4.0
 gunicorn==22.0.0
 psycopg2-binary
 dj-database-url
+whitenoise[brotli]
