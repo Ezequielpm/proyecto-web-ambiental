@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nn4nj=ous&umugx!&ueaw)f*d(#974vsg!d!*a@aljkfn@gi@x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ezequieltrueque.pythonanywhere.com', 'localhost','127.0.0.1','www.ecotrueques.com','ecotrueques.com','https://proyecto-web-ambiental.onrender.com']
+ALLOWED_HOSTS = ['ezequieltrueque.pythonanywhere.com', 'localhost','127.0.0.1','www.ecotrueques.com','ecotrueques.com','proyecto-web-ambiental.onrender.com']
 
 
 # Application definition
