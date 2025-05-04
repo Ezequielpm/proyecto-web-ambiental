@@ -79,15 +79,24 @@ WSGI_APPLICATION = 'webtrueque.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Configuración por defecto (puede ser SQLite para desarrollo local si quieres)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
 
+# Sobrescribir con la base de datos de Render si la variable de entorno existe
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+   DATABASES['default'] = dj_database_url.config(
+       default=DATABASE_URL,
+       conn_max_age=600, # Opcional: tiempo de vida de la conexión
+       ssl_require=True # Render requiere SSL para conexiones externas
+   )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
